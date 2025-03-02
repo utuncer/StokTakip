@@ -59,6 +59,7 @@
             this.txtKategoriAd.Name = "txtKategoriAd";
             this.txtKategoriAd.Size = new System.Drawing.Size(217, 30);
             this.txtKategoriAd.TabIndex = 0;
+            this.txtKategoriAd.TextChanged += new System.EventHandler(this.txtKategoriAd_TextChanged);
             // 
             // label1
             // 
@@ -148,6 +149,7 @@
             this.Name = "FrmKategoriListesi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kategori Listesi";
+            this.Load += new System.EventHandler(this.FrmKategoriListesi_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
