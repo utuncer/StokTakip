@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +55,145 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\IBLL.cs" />
+    <Compile Include="DAL\DAO\IDAO.cs" />
+    <Compile Include="DAL\DataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\KATEGORI.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MUSTERI.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SATIM.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\URUN.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmKategoriListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKategoriListesi.Designer.cs">
+      <DependentUpon>FrmKategoriListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMusteri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMusteri.Designer.cs">
+      <DependentUpon>FrmMusteri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMusteriListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMusteriListesi.Designer.cs">
+      <DependentUpon>FrmMusteriListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSatis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSatis.Designer.cs">
+      <DependentUpon>frmSatis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSatisListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSatisListesi.Designer.cs">
+      <DependentUpon>FrmSatisListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSilinenler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSilinenler.Designer.cs">
+      <DependentUpon>FrmSilinenler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStokEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStokEkle.Designer.cs">
+      <DependentUpon>FrmStokEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUrun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUrun.Designer.cs">
+      <DependentUpon>FrmUrun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUrunListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUrunListesi.Designer.cs">
+      <DependentUpon>FrmUrunListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUyari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUyari.Designer.cs">
+      <DependentUpon>FrmUyari.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKategoriListesi.resx">
+      <DependentUpon>FrmKategoriListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMusteri.resx">
+      <DependentUpon>FrmMusteri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMusteriListesi.resx">
+      <DependentUpon>FrmMusteriListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSatis.resx">
+      <DependentUpon>frmSatis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSatisListesi.resx">
+      <DependentUpon>FrmSatisListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSilinenler.resx">
+      <DependentUpon>FrmSilinenler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStokEkle.resx">
+      <DependentUpon>FrmStokEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUrun.resx">
+      <DependentUpon>FrmUrun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUrunListesi.resx">
+      <DependentUpon>FrmUrunListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUyari.resx">
+      <DependentUpon>FrmUyari.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +202,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="DAL\DataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\DataModel.edmx.diagram">
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +224,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\DataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DAL\DataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\urun.png" />
+    <None Include="Resources\stok.png" />
+    <None Include="Resources\Silinenler.png" />
+    <None Include="Resources\satis.png" />
+    <None Include="Resources\musteri.png" />
+    <None Include="Resources\kategori.png" />
+    <None Include="Resources\cikis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\DTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

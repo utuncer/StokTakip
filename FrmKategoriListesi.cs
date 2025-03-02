@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class FrmKategori : Form
+    public partial class FrmKategoriListesi : Form
     {
-        public FrmKategori()
+        public FrmKategoriListesi()
         {
             InitializeComponent();
         }
@@ -20,6 +20,14 @@ namespace StokTakip
         private void btnKapat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            FrmKategori frm = new FrmKategori();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
         }
     }
 }

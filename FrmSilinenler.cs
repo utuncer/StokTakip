@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class FrmKategori : Form
+    public partial class FrmSilinenler : Form
     {
-        public FrmKategori()
+        public FrmSilinenler()
         {
             InitializeComponent();
+        }
+
+        private void FrmSilinenler_Load(object sender, EventArgs e)
+        {
+            cmbTablolar.Items.Add("Kategoriler");
+            cmbTablolar.Items.Add("Müşteriler");
+            cmbTablolar.Items.Add("Satış");
+            cmbTablolar.Items.Add("Ürünler");
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

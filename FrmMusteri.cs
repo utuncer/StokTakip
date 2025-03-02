@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class FrmKategori : Form
+    public partial class FrmMusteri : Form
     {
-        public FrmKategori()
+        public FrmMusteri()
         {
             InitializeComponent();
         }

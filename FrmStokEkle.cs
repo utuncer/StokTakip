@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class FrmKategori : Form
+    public partial class FrmStokEkleme : Form
     {
-        public FrmKategori()
+        public FrmStokEkleme()
         {
             InitializeComponent();
+        }
+
+
+
+        private void txtUrunStok_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

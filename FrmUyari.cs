@@ -10,16 +10,18 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class FrmKategori : Form
+    public partial class FrmUyari : Form
     {
-        public FrmKategori()
+        public FrmUyari()
         {
             InitializeComponent();
         }
 
-        private void btnKapat_Click(object sender, EventArgs e)
+        private void btnTamam_Click(object sender, EventArgs e)
         {
-            this.Close();
+            FrmMain frm = new FrmMain();
+            this.Hide();
+            frm.ShowDialog();
         }
     }
 }

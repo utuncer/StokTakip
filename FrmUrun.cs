@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StokTakip
 {
-    public partial class FrmKategori : Form
+    public partial class FrmUrun : Form
     {
-        public FrmKategori()
+        public FrmUrun()
         {
             InitializeComponent();
         }
@@ -21,5 +21,15 @@ namespace StokTakip
         {
             this.Close();
         }
+
+        private void txtUrunFiyat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
     }
 }
