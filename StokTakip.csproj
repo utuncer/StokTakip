@@ -58,10 +58,12 @@
     <Compile Include="BLL\IBLL.cs" />
     <Compile Include="BLL\KategoriBLL.cs" />
     <Compile Include="BLL\MusteriBLL.cs" />
+    <Compile Include="BLL\UrunBLL.cs" />
     <Compile Include="DAL\DAO\IDAO.cs" />
     <Compile Include="DAL\DAO\KategoriDAO.cs" />
     <Compile Include="DAL\DAO\MusteriDAO.cs" />
     <Compile Include="DAL\DAO\StokContext.cs" />
+    <Compile Include="DAL\DAO\UrunDAO.cs" />
     <Compile Include="DAL\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +83,8 @@
     <Compile Include="DAL\DTO\KategoriDTO.cs" />
     <Compile Include="DAL\DTO\MusteriDetayDTO.cs" />
     <Compile Include="DAL\DTO\MusteriDTO.cs" />
+    <Compile Include="DAL\DTO\UrunDetayDTO.cs" />
+    <Compile Include="DAL\DTO\UrunDTO.cs" />
     <Compile Include="DAL\KATEGORI.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
