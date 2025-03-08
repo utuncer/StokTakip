@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StokTakip.DAL.DTO;
+using StokTakip.BLL;
+using StokTakip.DAL.DAO;
 
 namespace StokTakip
 {
@@ -28,6 +31,17 @@ namespace StokTakip
             this.Hide();
             frm.ShowDialog();
             this.Visible = true;
+            dto = bll.Select();
+            dataGridView1.DataSource = dto.Musteriler;
+        }
+        MusteriBLL bll = new MusteriBLL();
+        MusteriDTO dto = new MusteriDTO();
+        private void FrmMusteriListesi_Load(object sender, EventArgs e)
+        {
+            dto = bll.Select();
+            dataGridView1.DataSource = dto.Musteriler;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Müşteri Adı";
         }
     }
 }

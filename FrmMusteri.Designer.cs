@@ -54,6 +54,7 @@
             this.btnKaydet.TabIndex = 1;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // txtMusteriAd
             // 
@@ -85,6 +86,7 @@
             this.Name = "FrmMusteri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri";
+            this.Load += new System.EventHandler(this.FrmMusteri_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

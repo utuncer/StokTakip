@@ -148,6 +148,7 @@
             this.Name = "FrmMusteriListesi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Müşteri Listesi";
+            this.Load += new System.EventHandler(this.FrmMusteriListesi_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
