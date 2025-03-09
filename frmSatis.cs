@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StokTakip.BLL;
+using StokTakip.DAL.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +30,91 @@ namespace StokTakip
             {
                 e.Handled = true;
             }
+        }
+        public SatisDTO dto = new SatisDTO();
+        private void frmSatis_Load(object sender, EventArgs e)
+        {
+            gridMusteriler.DataSource = dto.Musteriler;
+            gridMusteriler.Columns[0].Visible = false;
+            gridMusteriler.Columns[1].HeaderText = "Müşteri Adı";
+            gridUrunler.DataSource = dto.Urunler;
+            gridUrunler.Columns[0].Visible = false;
+            gridUrunler.Columns[5].Visible = false;
+            gridUrunler.Columns[6].Visible = false;
+            gridUrunler.Columns[3].Visible = false;
+            gridUrunler.Columns[4].Visible = false;
+            gridUrunler.Columns[1].HeaderText = "Ürün Adı";
+            gridUrunler.Columns[2].HeaderText = "Kategori";
+            cmbKategori.DataSource = dto.Kategoriler;
+            cmbKategori.DisplayMember = "KategoriAd";
+            cmbKategori.ValueMember = "ID";
+            cmbKategori.SelectedIndex = -1;
+            if (dto.Kategoriler.Count > 0)
+                combofull = true;
+
+        }
+        bool combofull = false;
+        private void cmbKategori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (combofull)
+            {
+                List<UrunDetayDTO> list = dto.Urunler;
+                if (cmbKategori.SelectedIndex != -1)
+                {
+                    list = list.Where(x => x.KategoriID == Convert.ToInt32(cmbKategori.SelectedValue)).ToList();
+                    gridUrunler.DataSource = list;
+                }
+            }
+        }
+
+        private void txtMusteriAd_TextChanged(object sender, EventArgs e)
+        {
+            List<MusteriDetayDTO> list = dto.Musteriler.Where(x => x.MusteriAd.Contains(txtMusteriAd.Text)).ToList();
+            gridMusteriler.DataSource = list;
+        }
+        SatisDetayDTO detay = new SatisDetayDTO();
+        private void gridUrunler_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detay.UrunID = Convert.ToInt32(gridUrunler.Rows[e.RowIndex].Cells[0].Value);
+            detay.StokMiktar = Convert.ToInt32(gridUrunler.Rows[e.RowIndex].Cells[3].Value);
+            detay.Fiyat = Convert.ToInt32(gridUrunler.Rows[e.RowIndex].Cells[4].Value);
+            detay.KategoriID = Convert.ToInt32(gridUrunler.Rows[e.RowIndex].Cells[5].Value);
+            detay.UrunAd = gridUrunler.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtStok.Text = detay.StokMiktar.ToString();
+            txtUrunAd.Text = detay.UrunAd;
+            txtUrunFiyat.Text = detay.Fiyat.ToString();
+        }
+
+        private void gridMusteriler_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detay.MusteriID = Convert.ToInt32(gridMusteriler.Rows[e.RowIndex].Cells[0].Value);
+            detay.MusteriAd = gridMusteriler.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtMusteri.Text = detay.MusteriAd;
+        }
+        SatisBLL bll = new SatisBLL();
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            if (detay.UrunID == 0)
+                MessageBox.Show("Ürün seçiniz");
+            else if (detay.MusteriID == 0)
+                MessageBox.Show("Müşteri seçiniz");
+            else if (txtUrunSatisMiktari.Text.Trim() == "")
+                MessageBox.Show("Lütfen satış miktarı giriniz");
+            else if (detay.StokMiktar <= Convert.ToInt32(txtUrunSatisMiktari.Text))
+                MessageBox.Show("Yeterli stok yok. Stok miktarından fazla ürün satılamaz");
+            else
+            {
+                detay.SatisMiktar = Convert.ToInt32(txtUrunSatisMiktari.Text);
+                if(bll.Insert(detay))
+                {
+                    MessageBox.Show("Eklendi");
+                    txtUrunSatisMiktari.Clear();
+                    dto = bll.Select();
+                    gridUrunler.DataSource = dto.Urunler;
+                }
+            }
+
+
         }
     }
 }

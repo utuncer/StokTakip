@@ -130,6 +130,7 @@
             this.btnTemizle.TabIndex = 24;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
             // btnAra
             // 
@@ -140,6 +141,7 @@
             this.btnAra.TabIndex = 25;
             this.btnAra.Text = "Ara";
             this.btnAra.UseVisualStyleBackColor = true;
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // groupBox2
             // 
@@ -424,6 +426,7 @@
             this.Name = "FrmSatisListesi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Satış Listesi";
+            this.Load += new System.EventHandler(this.FrmSatisListesi_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -89,6 +89,7 @@ namespace StokTakip
                 list = list.Where(x => x.StokMiktar == Convert.ToInt32(txtUrunStok.Text)).ToList();
             if (rbStokKucuk.Checked)
                 list = list.Where(x => x.StokMiktar < Convert.ToInt32(txtUrunStok.Text)).ToList();
+            dataGridView1.DataSource=list;
 
 
         }
