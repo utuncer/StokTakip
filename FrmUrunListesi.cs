@@ -62,10 +62,11 @@ namespace StokTakip
             cmbKategori.SelectedIndex = -1;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Ürün";
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Ürün Adı";
             dataGridView1.Columns[2].HeaderText = "Kategori";
             dataGridView1.Columns[3].HeaderText = "Stok";
-            dataGridView1.Columns[4].HeaderText = "Ürün";
+            dataGridView1.Columns[4].HeaderText = "Ürün Fiyatı";
         }
 
         private void btnAra_Click(object sender, EventArgs e)

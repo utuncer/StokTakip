@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StokTakip.BLL
 {
@@ -43,7 +44,13 @@ namespace StokTakip.BLL
 
         public bool Update(UrunDetayDTO entity)
         {
-            throw new NotImplementedException();
+            URUN urun = new URUN();
+            if (entity.isStokEkleme)
+            {
+                urun.ID = entity.ID;
+                urun.Stok = entity.StokMiktar;
+            }
+            return dao.Update(urun);
         }
     }
 }

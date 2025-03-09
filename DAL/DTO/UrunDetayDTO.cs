@@ -14,5 +14,6 @@ namespace StokTakip.DAL.DTO
         public int StokMiktar { get; set; }
         public int Fiyat { get; set; }
         public int KategoriID { get; set; }
+        public bool isStokEkleme { get; set; }
     }
 }

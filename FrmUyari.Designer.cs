@@ -78,6 +78,7 @@
             this.Name = "FrmUyari";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dikkat!!!";
+            this.Load += new System.EventHandler(this.FrmUyari_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

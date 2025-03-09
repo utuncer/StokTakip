@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StokTakip.BLL;
+using StokTakip.DAL.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +24,27 @@ namespace StokTakip
             FrmMain frm = new FrmMain();
             this.Hide();
             frm.ShowDialog();
+        }
+        UrunBLL bll = new UrunBLL();
+        UrunDTO dto = new UrunDTO();
+        private void FrmUyari_Load(object sender, EventArgs e)
+        {
+            dto = bll.Select();
+            dto.Urunler = dto.Urunler.Where(x => x.StokMiktar <= 50).ToList(); // stok miktarı girilen sayıdan az olanları listeler
+            if (dto.Urunler.Count == 0)
+            {
+                FrmMain frm = new FrmMain();
+                this.Visible = false;
+                frm.ShowDialog();
+            }
+            dataGridView1.DataSource = dto.Urunler;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Ürün Adı";
+            dataGridView1.Columns[2].HeaderText = "Kategori";
+            dataGridView1.Columns[3].HeaderText = "Stok";
+            dataGridView1.Columns[4].HeaderText = "Ürün Fiyatı";
         }
     }
 }
