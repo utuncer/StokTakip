@@ -13,7 +13,7 @@ using StokTakip.DAL.DTO;
 
 namespace StokTakip
 {
-    
+
     public partial class FrmKategori : Form
     {
         public FrmKategori()
@@ -32,15 +32,38 @@ namespace StokTakip
                 MessageBox.Show("Kategori Boş");
             else
             {
-                KategoriDetayDTO detay = new KategoriDetayDTO();
-                detay.KategoriAd = txtKategoriAd.Text;
-                if (bll.Insert(detay))
+                if (isUpdate)
                 {
-                    MessageBox.Show("Kategori EKlendi");
-                    txtKategoriAd.Clear();
+                    if (detay.KategoriAd == txtKategoriAd.Text)
+                        MessageBox.Show("Değişiklik yok");
+                    else
+                    {
+                        detay.KategoriAd = txtKategoriAd.Text;
+                        if(bll.Update(detay))
+                        {
+                            MessageBox.Show("Güncellendi");
+                        }
+                    }
+                }
+                else
+                {
+                    KategoriDetayDTO detay = new KategoriDetayDTO();
+                    detay.KategoriAd = txtKategoriAd.Text;
+                    if (bll.Insert(detay))
+                    {
+                        MessageBox.Show("Kategori EKlendi");
+                        txtKategoriAd.Clear();
+                    }
                 }
             }
 
+        }
+        public KategoriDetayDTO detay = new KategoriDetayDTO();
+        public bool isUpdate = false;
+        private void FrmKategori_Load(object sender, EventArgs e)
+        {
+            if (isUpdate)
+                txtKategoriAd.Text = detay.KategoriAd;
         }
     }
 }

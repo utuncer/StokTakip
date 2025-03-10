@@ -29,8 +29,9 @@ namespace StokTakip
         private void btnEkle_Click(object sender, EventArgs e)
         {
             FrmKategori frm = new FrmKategori();
+            frm.isUpdate = false;
             this.Hide();
-            frm.ShowDialog(); 
+            frm.ShowDialog();
             this.Visible = true;//Yeni açılan form kapatıldığında buradaki kategori listesi formuna gitmesini sağlar olmasaydı menü formuna gidecekti
             Doldur();
         }
@@ -57,6 +58,28 @@ namespace StokTakip
             dataGridView1.Columns[1].HeaderText = "Kategori Adı";
         }
 
+        KategoriDetayDTO detay = new KategoriDetayDTO();
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detay.ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            detay.KategoriAd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+        }
 
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            if (detay.ID == 0)
+                MessageBox.Show("Kategori seçiniz");
+            else
+            {
+                FrmKategori frm = new FrmKategori();
+                frm.isUpdate = true;
+                frm.detay = detay;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                dto = bll.Select();
+                dataGridView1.DataSource = dto.Kategoriler;
+            }
+        }
     }
 }

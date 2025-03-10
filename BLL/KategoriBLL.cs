@@ -39,7 +39,10 @@ namespace StokTakip.BLL
 
         public bool Update(KategoriDetayDTO entity)
         {
-            throw new NotImplementedException();
+            KATEGORI kt= new KATEGORI();
+            kt.ID=entity.ID;
+            kt.KategoriAd=entity.KategoriAd;
+            return dao.Update(kt);
         }
     }
 }

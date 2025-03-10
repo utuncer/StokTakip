@@ -31,18 +31,39 @@ namespace StokTakip
                 MessageBox.Show("Müşteri adı boş");
             else
             {
-                detay.MusteriAd = txtMusteriAd.Text;
-                if(bll.Insert(detay))
+                if (isUpdate)
                 {
-                    MessageBox.Show("Müşteri Eklendi");
-                    txtMusteriAd.Clear();
+                    if (detaydto.MusteriAd == txtMusteriAd.Text)
+                        MessageBox.Show("Değişiklik yok");
+                    else
+                    {
+                        detaydto.MusteriAd = txtMusteriAd.Text;
+                        if (bll.Update(detaydto))
+                        {
+                            MessageBox.Show("Güncellendi");
+                            this.Close();
+                        }
+                    }
                 }
+                else
+                {
+                    detay.MusteriAd = txtMusteriAd.Text;
+                    if (bll.Insert(detay))
+                    {
+                        MessageBox.Show("Müşteri Eklendi");
+                        txtMusteriAd.Clear();
+                    }
+                }
+
+
             }
         }
-
+        public MusteriDetayDTO detaydto = new MusteriDetayDTO();
+        public bool isUpdate = false;
         private void FrmMusteri_Load(object sender, EventArgs e)
         {
-
+            if (isUpdate)
+                txtMusteriAd.Text = detaydto.MusteriAd;
         }
     }
 }

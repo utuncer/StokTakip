@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StokTakip.DAL.DAO;
+using System.Runtime.InteropServices;
 
 namespace StokTakip.DAL.DAO
 {
@@ -59,7 +60,10 @@ namespace StokTakip.DAL.DAO
 
         public bool Update(MUSTERI entity)
         {
-            throw new NotImplementedException();
+            MUSTERI mm = db.MUSTERI.First(x => x.ID == entity.ID);
+            mm.MusteriAd = entity.MusteriAd;
+            db.SaveChanges();
+            return true;    
         }
     }
 }
