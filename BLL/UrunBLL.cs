@@ -36,7 +36,7 @@ namespace StokTakip.BLL
 
         public UrunDTO Select()
         {
-           UrunDTO dto = new UrunDTO();
+            UrunDTO dto = new UrunDTO();
             dto.Kategoriler = kategoridao.Select();
             dto.Urunler = dao.Select();
             return dto;
@@ -49,6 +49,13 @@ namespace StokTakip.BLL
             {
                 urun.ID = entity.ID;
                 urun.Stok = entity.StokMiktar;
+            }
+            else
+            {
+                urun.ID = entity.ID;
+                urun.Fiyat = entity.Fiyat;
+                urun.KategoriID = entity.KategoriID;
+                urun.UrunAd = entity.UrunAd;
             }
             return dao.Update(urun);
         }

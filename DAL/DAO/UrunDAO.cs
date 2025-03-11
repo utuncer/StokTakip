@@ -75,7 +75,12 @@ namespace StokTakip.DAL.DAO
                 {
                     urun.Stok = entity.Stok;
                 }
-
+                else
+                {
+                    urun.KategoriID = entity.KategoriID;
+                    urun.UrunAd = entity.UrunAd;
+                    urun.Fiyat = entity.Fiyat;
+                }
                 db.SaveChanges();
                 return true;
             }
