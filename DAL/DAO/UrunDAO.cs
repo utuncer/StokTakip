@@ -13,10 +13,30 @@ namespace StokTakip.DAL.DAO
     {
         public bool Delete(URUN entity)
         {
-            URUN urun = db.URUN.First(x => x.ID == entity.ID);
-            urun.isDeleted = true;
-            urun.DeletedDay = DateTime.Now;
-            db.SaveChanges();
+            if (entity.ID != 0)
+            {
+                URUN urun = db.URUN.First(x => x.ID == entity.ID);
+                urun.isDeleted = true;
+                urun.DeletedDay = DateTime.Now;
+                db.SaveChanges();
+            }
+            else if (entity.KategoriID != 0)
+            {
+                List<URUN> list = db.URUN.Where(x => x.KategoriID == entity.KategoriID).ToList();
+                foreach (var item in list)
+                {
+                    item.isDeleted = true;
+                    item.DeletedDay = DateTime.Now;
+                    List<SATIM> satis = db.SATIM.Where(x => x.UrunID == item.ID).ToList();
+                    foreach (var item2 in satis)
+                    {
+                        item2.isDeleted = true;
+                        item2.DeletedDay = DateTime.Now;
+                    }
+                    db.SaveChanges();
+                }
+                db.SaveChanges();
+            }
             return true;
         }
 

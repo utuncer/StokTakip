@@ -81,5 +81,22 @@ namespace StokTakip
                 dataGridView1.DataSource = dto.Kategoriler;
             }
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (detay.ID == 0)
+                MessageBox.Show("Lütfen silmek istediğiniz kategoriyi seçiniz");
+            DialogResult result = MessageBox.Show("Seçtiğiniz kategoriyi silmeyi onaylıyor musunuz?", "Dikkat", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (bll.Delete(detay))
+                {
+                    MessageBox.Show("Silme işlemi tamamlandı");
+                    bll = new KategoriBLL();
+                    dto = bll.Select();
+                    dataGridView1.DataSource = dto.Kategoriler;
+                }
+            }
+        }
     }
 }

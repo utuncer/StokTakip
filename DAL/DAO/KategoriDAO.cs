@@ -12,7 +12,11 @@ namespace StokTakip.DAL.DAO
     {
         public bool Delete(KATEGORI entity)
         {
-            throw new NotImplementedException();
+            KATEGORI kk = db.KATEGORI.First(x => x.ID == entity.ID);
+            kk.isDeleted = true;
+            kk.DeletedDay = DateTime.Now;
+            db.SaveChanges();
+            return true;
         }
 
         public bool GetBack(int ID)
@@ -39,7 +43,7 @@ namespace StokTakip.DAL.DAO
         {
             try
             {
-                var list = db.KATEGORI;
+                var list = db.KATEGORI.Where(x => x.isDeleted == false);
                 List<KategoriDetayDTO> liste = new List<KategoriDetayDTO>();
                 foreach (var item in list)
                 {
