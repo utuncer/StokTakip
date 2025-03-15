@@ -57,10 +57,10 @@ namespace StokTakip.DAL.DAO
                 UrunDetayDTO dto = new UrunDetayDTO();
                 dto.Fiyat = item.fiyat;
                 dto.ID = item.urunID;
-                dto.KategoriAd = item.kategoriad;
+                dto.KategoriAd = item.kategoriad.Trim();
                 dto.KategoriID = item.kID;
                 dto.StokMiktar = item.stok;
-                dto.UrunAd = item.urunad;
+                dto.UrunAd = item.urunad.Trim();
                 liste.Add(dto);
             }
             return liste;
@@ -71,14 +71,14 @@ namespace StokTakip.DAL.DAO
             try
             {
                 URUN urun = db.URUN.First(x => x.ID == entity.ID);
-                if(entity.Fiyat == 0)
+                if (entity.Fiyat == 0)
                 {
                     urun.Stok = entity.Stok;
                 }
                 else
                 {
                     urun.KategoriID = entity.KategoriID;
-                    urun.UrunAd = entity.UrunAd;
+                    urun.UrunAd = entity.UrunAd.Trim();
                     urun.Fiyat = entity.Fiyat;
                 }
                 db.SaveChanges();

@@ -28,7 +28,7 @@ namespace StokTakip.BLL
         {
             URUN urun = new URUN();
             urun.Fiyat = entity.Fiyat;
-            urun.UrunAd = entity.UrunAd;
+            urun.UrunAd = entity.UrunAd.ToString().Trim();
             urun.KategoriID = entity.KategoriID;
             urun.isDeleted = false;
             return dao.Insert(urun);
@@ -55,7 +55,7 @@ namespace StokTakip.BLL
                 urun.ID = entity.ID;
                 urun.Fiyat = entity.Fiyat;
                 urun.KategoriID = entity.KategoriID;
-                urun.UrunAd = entity.UrunAd;
+                urun.UrunAd = entity.UrunAd.Trim();
             }
             return dao.Update(urun);
         }

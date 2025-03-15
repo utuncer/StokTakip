@@ -25,7 +25,7 @@ namespace StokTakip.BLL
         public bool Insert(KategoriDetayDTO entity)
         {
             KATEGORI kategori = new KATEGORI();
-            kategori.KategoriAd = entity.KategoriAd;
+            kategori.KategoriAd = entity.KategoriAd.Trim();
             kategori.isDeleted = false;
             return dao.Insert(kategori);
         }
@@ -41,7 +41,7 @@ namespace StokTakip.BLL
         {
             KATEGORI kt= new KATEGORI();
             kt.ID=entity.ID;
-            kt.KategoriAd=entity.KategoriAd;
+            kt.KategoriAd=entity.KategoriAd.Trim();
             return dao.Update(kt);
         }
     }

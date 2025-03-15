@@ -46,7 +46,7 @@ namespace StokTakip.DAL.DAO
                 {
                     MusteriDetayDTO dto = new MusteriDetayDTO();
                     dto.ID = item.ID;
-                    dto.MusteriAd = item.MusteriAd;
+                    dto.MusteriAd = item.MusteriAd.Trim();
                     liste.Add(dto);
                 }
                 return liste;
@@ -61,7 +61,7 @@ namespace StokTakip.DAL.DAO
         public bool Update(MUSTERI entity)
         {
             MUSTERI mm = db.MUSTERI.First(x => x.ID == entity.ID);
-            mm.MusteriAd = entity.MusteriAd;
+            mm.MusteriAd = entity.MusteriAd.Trim();
             db.SaveChanges();
             return true;    
         }

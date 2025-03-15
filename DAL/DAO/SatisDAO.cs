@@ -86,7 +86,10 @@ namespace StokTakip.DAL.DAO
 
         public bool Update(SATIM entity)
         {
-            throw new NotImplementedException();
+            SATIM ss = db.SATIM.First(x => x.ID == entity.ID);
+            ss.SatisMiktar = entity.SatisMiktar;
+            db.SaveChanges();
+            return true;
         }
     }
 }

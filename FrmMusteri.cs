@@ -33,11 +33,11 @@ namespace StokTakip
             {
                 if (isUpdate)
                 {
-                    if (detaydto.MusteriAd == txtMusteriAd.Text)
+                    if (detaydto.MusteriAd == txtMusteriAd.Text.Trim())
                         MessageBox.Show("Değişiklik yok");
                     else
                     {
-                        detaydto.MusteriAd = txtMusteriAd.Text;
+                        detaydto.MusteriAd = txtMusteriAd.Text.Trim();
                         if (bll.Update(detaydto))
                         {
                             MessageBox.Show("Güncellendi");
@@ -47,7 +47,7 @@ namespace StokTakip
                 }
                 else
                 {
-                    detay.MusteriAd = txtMusteriAd.Text;
+                    detay.MusteriAd = txtMusteriAd.Text.Trim();
                     if (bll.Insert(detay))
                     {
                         MessageBox.Show("Müşteri Eklendi");
@@ -63,7 +63,7 @@ namespace StokTakip
         private void FrmMusteri_Load(object sender, EventArgs e)
         {
             if (isUpdate)
-                txtMusteriAd.Text = detaydto.MusteriAd;
+                txtMusteriAd.Text = detaydto.MusteriAd.Trim();
         }
     }
 }

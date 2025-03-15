@@ -45,7 +45,7 @@ namespace StokTakip.DAL.DAO
                 {
                     KategoriDetayDTO dto = new KategoriDetayDTO();
                     dto.ID = item.ID;
-                    dto.KategoriAd = item.KategoriAd;
+                    dto.KategoriAd = item.KategoriAd.Trim();
                     liste.Add(dto);
                 }
                 return liste;
@@ -62,7 +62,7 @@ namespace StokTakip.DAL.DAO
             try
             {
                 KATEGORI kt = db.KATEGORI.First(x => x.ID == entity.ID);
-                kt.KategoriAd = entity.KategoriAd;
+                kt.KategoriAd = entity.KategoriAd.Trim();
                 db.SaveChanges();
                 return true;
             }

@@ -1,4 +1,4 @@
-﻿using StokTakip.BLL;
+﻿    using StokTakip.BLL;
 using StokTakip.DAL.DTO;
 using System;
 using System.Collections.Generic;

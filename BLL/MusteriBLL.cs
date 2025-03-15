@@ -25,7 +25,7 @@ namespace StokTakip.BLL
         public bool Insert(MusteriDetayDTO entity)
         {
             MUSTERI musteri = new MUSTERI();
-            musteri.MusteriAd = entity.MusteriAd;
+            musteri.MusteriAd = entity.MusteriAd.Trim();
             musteri.isDeleted = false;
             return dao.Insert(musteri);
         }
@@ -41,7 +41,7 @@ namespace StokTakip.BLL
         {
             MUSTERI musteri = new MUSTERI();
             musteri.ID = entity.ID;
-            musteri.MusteriAd = entity.MusteriAd;
+            musteri.MusteriAd = entity.MusteriAd.Trim();
             return dao.Update(musteri);
         }
     }

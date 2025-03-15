@@ -34,11 +34,11 @@ namespace StokTakip
             {
                 if (isUpdate)
                 {
-                    if (detay.KategoriAd == txtKategoriAd.Text)
+                    if (detay.KategoriAd == txtKategoriAd.Text.Trim())
                         MessageBox.Show("Değişiklik yok");
                     else
                     {
-                        detay.KategoriAd = txtKategoriAd.Text;
+                        detay.KategoriAd = txtKategoriAd.Text.Trim();
                         if(bll.Update(detay))
                         {
                             MessageBox.Show("Güncellendi");
@@ -48,7 +48,7 @@ namespace StokTakip
                 else
                 {
                     KategoriDetayDTO detay = new KategoriDetayDTO();
-                    detay.KategoriAd = txtKategoriAd.Text;
+                    detay.KategoriAd = txtKategoriAd.Text.Trim();
                     if (bll.Insert(detay))
                     {
                         MessageBox.Show("Kategori EKlendi");
@@ -63,7 +63,7 @@ namespace StokTakip
         private void FrmKategori_Load(object sender, EventArgs e)
         {
             if (isUpdate)
-                txtKategoriAd.Text = detay.KategoriAd;
+                txtKategoriAd.Text = detay.KategoriAd.Trim();
         }
     }
 }
