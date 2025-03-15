@@ -21,7 +21,7 @@ namespace StokTakip.BLL
             SATIM satis = new SATIM();
             satis.ID = entity.SatisID;
             dao.Delete(satis);
-            urundao.stokGuncelle(entity);
+            urundao.stokGuncelle(entity); //--------------------------------------
             return true;
         }
 

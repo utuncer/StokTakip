@@ -115,12 +115,14 @@ namespace StokTakip.DAL.DAO
             }
         }
 
-        internal void stokGuncelle(SatisDetayDTO entity)
+        internal void stokGuncelle(SatisDetayDTO entity) //-------------------------------
         {
             URUN urun = db.URUN.First(x => x.ID == entity.UrunID);
             int temp = urun.Stok + entity.SatisMiktar;
             urun.Stok = temp;
             db.SaveChanges();
         }
+
+
     }
 }

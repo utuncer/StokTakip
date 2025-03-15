@@ -49,7 +49,7 @@ namespace StokTakip
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             detay.ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-            detay.MusteriAd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();   
+            detay.MusteriAd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -67,6 +67,23 @@ namespace StokTakip
                 bll = new MusteriBLL();
                 dto = bll.Select();
                 dataGridView1.DataSource = dto.Musteriler;
+            }
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (detay.ID == 0)
+                MessageBox.Show("Lütfen silmek istediğiniz müşteriyi seçiniz");
+            DialogResult result = MessageBox.Show("Seçtiğiniz müşteriyi silmeyi onaylıyor musunuz?", "Dikkat", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (bll.Delete(detay))
+                {
+                    MessageBox.Show("Silme işlemi tamamlandı");
+                    bll = new MusteriBLL();
+                    dto = bll.Select();
+                    dataGridView1.DataSource = dto.Musteriler;
+                }
             }
         }
     }

@@ -14,7 +14,11 @@ namespace StokTakip.DAL.DAO
     {
         public bool Delete(MUSTERI entity)
         {
-            throw new NotImplementedException();
+            MUSTERI mm = db.MUSTERI.First(x => x.ID == entity.ID);
+            mm.isDeleted = true;
+            mm.DeletedDay = DateTime.Now;
+            db.SaveChanges();
+            return true;
         }
 
         public bool GetBack(int ID)
@@ -41,7 +45,7 @@ namespace StokTakip.DAL.DAO
             try
             {
                 List<MusteriDetayDTO> liste = new List<MusteriDetayDTO>();
-                var list = db.MUSTERI;
+                var list = db.MUSTERI.Where(x => x.isDeleted == false);
                 foreach (var item in list)
                 {
                     MusteriDetayDTO dto = new MusteriDetayDTO();
@@ -63,7 +67,9 @@ namespace StokTakip.DAL.DAO
             MUSTERI mm = db.MUSTERI.First(x => x.ID == entity.ID);
             mm.MusteriAd = entity.MusteriAd.Trim();
             db.SaveChanges();
-            return true;    
+            return true;
+
+
         }
     }
 }

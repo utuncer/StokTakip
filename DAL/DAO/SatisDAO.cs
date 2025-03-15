@@ -29,6 +29,20 @@ namespace StokTakip.DAL.DAO
                 }
                 db.SaveChanges();
             }
+            else if (entity.MusteriID != 0)
+            {
+                List<SATIM> list = db.SATIM.Where(x => x.MusteriID == entity.MusteriID).ToList();
+                foreach (var item in list)
+                {
+
+                    item.isDeleted = true;
+                    item.DeletedDay = DateTime.Now;
+
+                    URUN urun = db.URUN.First(x => x.ID == item.UrunID);
+                    urun.Stok += item.SatisMiktar;
+                }
+                db.SaveChanges();
+            }
             return true;
         }
 

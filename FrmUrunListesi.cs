@@ -158,9 +158,7 @@ namespace StokTakip
                 }
             }
 
-            /*
-                             MessageBox.Show("Lütfen silmek istediğiniz satış işlemini seçiniz");
-             */
+
         }
     }
 }

@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 using StokTakip.DAL.DAO;
 using StokTakip.DAL.DTO;
 using StokTakip.DAL;
+using System.Security.Cryptography.X509Certificates;
 
 namespace StokTakip.BLL
 {
     public class MusteriBLL : IBLL<MusteriDetayDTO, MusteriDTO>
     {
+        SatisDAO satisdao = new SatisDAO();
         MusteriDAO dao = new MusteriDAO();
+        UrunDAO urundao = new UrunDAO();
         public bool Delete(MusteriDetayDTO entity)
         {
-            throw new NotImplementedException();
+            MUSTERI musteri = new MUSTERI();
+            musteri.ID = entity.ID;
+            dao.Delete(musteri);
+            SATIM satis = new SATIM();
+            satis.MusteriID = entity.ID;
+            satisdao.Delete(satis);
+            return true;
         }
 
         public bool GetBack(int TableID, MusteriDetayDTO entity)
