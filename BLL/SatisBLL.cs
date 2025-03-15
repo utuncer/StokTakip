@@ -18,7 +18,11 @@ namespace StokTakip.BLL
         SatisDAO dao = new SatisDAO();
         public bool Delete(SatisDetayDTO entity)
         {
-            throw new NotImplementedException();
+            SATIM satis = new SATIM();
+            satis.ID = entity.SatisID;
+            dao.Delete(satis);
+            urundao.stokGuncelle(entity);
+            return true;
         }
 
         public bool GetBack(int TableID, SatisDetayDTO entity)
@@ -30,7 +34,7 @@ namespace StokTakip.BLL
         {
             SATIM satis = new SATIM();
             satis.UrunID = entity.UrunID;
-            satis.MusteriID=entity.MusteriID;
+            satis.MusteriID = entity.MusteriID;
             satis.SatisMiktar = entity.SatisMiktar;
             satis.SatisTarihi = DateTime.Today;
             satis.SatisFiyat = entity.Fiyat;
@@ -58,9 +62,9 @@ namespace StokTakip.BLL
         {
             SATIM satis = new SATIM();
             satis.SatisMiktar = entity.SatisMiktar;
-            satis.ID = entity.SatisID;  
+            satis.ID = entity.SatisID;
             dao.Update(satis);
-            int temp = entity.StokMiktar;   
+            int temp = entity.StokMiktar;
             URUN urun = new URUN();
             urun.Stok = entity.StokMiktar - (entity.SatisMiktar - temp);
             urun.ID = entity.UrunID;

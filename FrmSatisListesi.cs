@@ -153,5 +153,22 @@ namespace StokTakip
                 dataGridView1.DataSource = dto.Satislar;
             }
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (detay.SatisID == 0) // 0 ise seçilmemiş demektir
+                MessageBox.Show("Lütfen silmek istediğiniz satış işlemini seçiniz");
+            DialogResult result = MessageBox.Show("Seçtiğiniz satış işlemini silmeyi onaylıyor musunuz?", "Dikkat", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if(bll.Delete(detay))
+                {
+                    MessageBox.Show("Silme işlemi tamamlandı");
+                    bll = new SatisBLL();
+                    dto = bll.Select();
+                    dataGridView1.DataSource = dto.Satislar;
+                }
+            }
+        }
     }
 }

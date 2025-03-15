@@ -12,7 +12,11 @@ namespace StokTakip.DAL.DAO
     {
         public bool Delete(SATIM entity)
         {
-            throw new NotImplementedException();
+            SATIM satis = db.SATIM.First(x => x.ID == entity.ID);
+            satis.isDeleted = true;
+            satis.DeletedDay = DateTime.Now;
+            db.SaveChanges();
+            return true;
         }
 
         public bool GetBack(int ID)
@@ -40,7 +44,7 @@ namespace StokTakip.DAL.DAO
             try
             {
                 List<SatisDetayDTO> liste = new List<SatisDetayDTO>();
-                var list = (from s in db.SATIM
+                var list = (from s in db.SATIM.Where(x => x.isDeleted == false)
                             join u in db.URUN on s.UrunID equals u.ID
                             join k in db.KATEGORI on s.KategoriID equals k.ID
                             join m in db.MUSTERI on s.MusteriID equals m.ID
@@ -50,8 +54,8 @@ namespace StokTakip.DAL.DAO
                                 urunad = u.UrunAd,
                                 kategoriad = k.KategoriAd,
                                 fiyat = s.SatisFiyat,
-                                satistarihi=s.SatisTarihi,
-                                satismiktari=s.SatisMiktar,
+                                satistarihi = s.SatisTarihi,
+                                satismiktari = s.SatisMiktar,
                                 stok = u.Stok,
                                 satisID = s.ID,
                                 urunID = s.UrunID,
