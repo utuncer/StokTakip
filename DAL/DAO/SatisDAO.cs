@@ -12,10 +12,23 @@ namespace StokTakip.DAL.DAO
     {
         public bool Delete(SATIM entity)
         {
-            SATIM satis = db.SATIM.First(x => x.ID == entity.ID);
-            satis.isDeleted = true;
-            satis.DeletedDay = DateTime.Now;
-            db.SaveChanges();
+            if (entity.ID != 0)
+            {
+                SATIM satis = db.SATIM.First(x => x.ID == entity.ID);
+                satis.isDeleted = true;
+                satis.DeletedDay = DateTime.Now;
+                db.SaveChanges();
+            }
+            else if (entity.UrunID != 0)
+            {
+                List<SATIM> list = db.SATIM.Where(x => x.UrunID == entity.UrunID).ToList();
+                foreach (var item in list)
+                {
+                    item.isDeleted = true;
+                    item.DeletedDay = DateTime.Now;
+                }
+                db.SaveChanges();
+            }
             return true;
         }
 

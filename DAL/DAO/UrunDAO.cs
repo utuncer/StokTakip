@@ -13,7 +13,11 @@ namespace StokTakip.DAL.DAO
     {
         public bool Delete(URUN entity)
         {
-            throw new NotImplementedException();
+            URUN urun = db.URUN.First(x => x.ID == entity.ID);
+            urun.isDeleted = true;
+            urun.DeletedDay = DateTime.Now;
+            db.SaveChanges();
+            return true;
         }
 
         public bool GetBack(int ID)
@@ -40,7 +44,7 @@ namespace StokTakip.DAL.DAO
         {
             List<UrunDetayDTO> liste = new List<UrunDetayDTO>();
             //Tablo birleştirme
-            var list = (from u in db.URUN
+            var list = (from u in db.URUN.Where(x => x.isDeleted == false)
                         join
                         k in db.KATEGORI on u.KategoriID equals k.ID
                         select new

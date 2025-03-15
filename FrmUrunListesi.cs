@@ -1,4 +1,4 @@
-﻿    using StokTakip.BLL;
+﻿using StokTakip.BLL;
 using StokTakip.DAL.DTO;
 using System;
 using System.Collections.Generic;
@@ -140,6 +140,27 @@ namespace StokTakip
                 dto = bll.Select();
                 dataGridView1.DataSource = dto.Urunler;
             }
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (detayDTO.ID == 0)
+                MessageBox.Show("Lütfen silmek istediğiniz ürünü seçiniz");
+            DialogResult result = MessageBox.Show("Seçtiğiniz satış işlemini silmeyi onaylıyor musunuz?", "Dikkat", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (bll.Delete(detayDTO))
+                {
+                    MessageBox.Show("Silme işlemi tamamlandı");
+                    bll = new UrunBLL();
+                    dto = bll.Select();
+                    dataGridView1.DataSource = dto.Urunler;
+                }
+            }
+
+            /*
+                             MessageBox.Show("Lütfen silmek istediğiniz satış işlemini seçiniz");
+             */
         }
     }
 }
