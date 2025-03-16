@@ -15,5 +15,6 @@ namespace StokTakip.DAL.DTO
         public int Fiyat { get; set; }
         public int KategoriID { get; set; }
         public bool isStokEkleme { get; set; }
+        public bool isKategoriDeleted { get; set; }
     }
 }

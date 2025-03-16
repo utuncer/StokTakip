@@ -3,6 +3,7 @@ using StokTakip.DAL.DAO;
 using StokTakip.DAL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,13 @@ namespace StokTakip.BLL
             dao.Delete(urun);
             SATIM satis = new SATIM();
             satis.UrunID = entity.ID;
-            satisdao.Delete(satis); 
+            satisdao.Delete(satis);
             return true;
         }
 
-        public bool GetBack(int TableID, UrunDetayDTO entity)
+        public bool GetBack(UrunDetayDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.ID);
         }
 
         public bool Insert(UrunDetayDTO entity)

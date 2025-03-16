@@ -12,6 +12,6 @@ namespace StokTakip.BLL
         bool Update(T entity);
         K Select();
         bool Delete(T entity);
-        bool GetBack(int TableID, T entity);
+        bool GetBack(T entity);
     }
 }

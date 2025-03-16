@@ -26,9 +26,9 @@ namespace StokTakip.BLL
             return true;
         }
 
-        public bool GetBack(int TableID, MusteriDetayDTO entity)
+        public bool GetBack(MusteriDetayDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.ID);
         }
 
         public bool Insert(MusteriDetayDTO entity)

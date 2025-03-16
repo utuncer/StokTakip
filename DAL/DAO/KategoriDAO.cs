@@ -21,7 +21,10 @@ namespace StokTakip.DAL.DAO
 
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            KATEGORI kk = db.KATEGORI.First(x => x.ID == ID);
+            kk.isDeleted = false;
+            db.SaveChanges();
+            return true;
         }
 
         public bool Insert(KATEGORI entity)
@@ -44,6 +47,28 @@ namespace StokTakip.DAL.DAO
             try
             {
                 var list = db.KATEGORI.Where(x => x.isDeleted == false);
+                List<KategoriDetayDTO> liste = new List<KategoriDetayDTO>();
+                foreach (var item in list)
+                {
+                    KategoriDetayDTO dto = new KategoriDetayDTO();
+                    dto.ID = item.ID;
+                    dto.KategoriAd = item.KategoriAd.Trim();
+                    liste.Add(dto);
+                }
+                return liste;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<KategoriDetayDTO> Select(bool delete)
+        {
+            try
+            {
+                var list = db.KATEGORI.Where(x => x.isDeleted == delete);
                 List<KategoriDetayDTO> liste = new List<KategoriDetayDTO>();
                 foreach (var item in list)
                 {

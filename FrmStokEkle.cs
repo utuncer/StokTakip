@@ -52,6 +52,7 @@ namespace StokTakip
             dataGridView1.Columns[3].HeaderText = "Stok";
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
         }
 
         private void cmbKategori_SelectedIndexChanged(object sender, EventArgs e)

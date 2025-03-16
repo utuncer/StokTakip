@@ -72,6 +72,9 @@ namespace StokTakip
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[11].Visible = false;
+            dataGridView1.Columns[12].Visible = false;
+            dataGridView1.Columns[13].Visible = false;
         }
 
         private void btnAra_Click(object sender, EventArgs e)

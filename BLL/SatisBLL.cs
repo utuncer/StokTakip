@@ -25,9 +25,15 @@ namespace StokTakip.BLL
             return true;
         }
 
-        public bool GetBack(int TableID, SatisDetayDTO entity)
+        public bool GetBack(SatisDetayDTO entity)
         {
-            throw new NotImplementedException();
+            dao.GetBack(entity.SatisID);
+            URUN urun = new URUN();
+            urun.ID = entity.UrunID;
+            int temp = entity.StokMiktar + entity.SatisMiktar;
+            urun.Stok = temp;
+            urundao.Update(urun);
+            return true;
         }
 
         public bool Insert(SatisDetayDTO entity)
@@ -55,6 +61,16 @@ namespace StokTakip.BLL
             dto.Musteriler = musteridao.Select();
             dto.Urunler = urundao.Select();
             dto.Satislar = dao.Select();
+            return dto;
+        }
+
+        public SatisDTO Select(bool deleted)
+        {
+            SatisDTO dto = new SatisDTO();
+            dto.Kategoriler = kategoridao.Select(deleted);
+            dto.Musteriler = musteridao.Select(deleted);
+            dto.Urunler = urundao.Select(deleted);
+            dto.Satislar = dao.Select(deleted);
             return dto;
         }
 

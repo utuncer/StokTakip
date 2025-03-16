@@ -42,7 +42,10 @@ namespace StokTakip.DAL.DAO
 
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            URUN urun = db.URUN.First(x => x.ID == ID);
+            urun.isDeleted = false;
+            db.SaveChanges();
+            return true;
         }
 
         public bool Insert(URUN entity)
@@ -74,7 +77,8 @@ namespace StokTakip.DAL.DAO
                             fiyat = u.Fiyat,
                             urunID = u.ID,
                             kategoriad = k.KategoriAd,
-                            kID = k.ID
+                            kID = k.ID,
+                            kategoriisdeleted = k.isDeleted
                         }).OrderBy(x => x.urunad).ToList();
             foreach (var item in list)
             {
@@ -85,6 +89,39 @@ namespace StokTakip.DAL.DAO
                 dto.KategoriID = item.kID;
                 dto.StokMiktar = item.stok;
                 dto.UrunAd = item.urunad.Trim();
+                dto.isKategoriDeleted = item.kategoriisdeleted;
+                liste.Add(dto);
+            }
+            return liste;
+        }
+
+        public List<UrunDetayDTO> Select(bool deleted)
+        {
+            List<UrunDetayDTO> liste = new List<UrunDetayDTO>();
+            //Tablo birleştirme
+            var list = (from u in db.URUN.Where(x => x.isDeleted == deleted)
+                        join
+                        k in db.KATEGORI on u.KategoriID equals k.ID
+                        select new
+                        {
+                            urunad = u.UrunAd,
+                            stok = u.Stok,
+                            fiyat = u.Fiyat,
+                            urunID = u.ID,
+                            kategoriad = k.KategoriAd,
+                            kID = k.ID,
+                            kategoriisdeleted = k.isDeleted
+                        }).OrderBy(x => x.urunad).ToList();
+            foreach (var item in list)
+            {
+                UrunDetayDTO dto = new UrunDetayDTO();
+                dto.Fiyat = item.fiyat;
+                dto.ID = item.urunID;
+                dto.KategoriAd = item.kategoriad.Trim();
+                dto.KategoriID = item.kID;
+                dto.StokMiktar = item.stok;
+                dto.UrunAd = item.urunad.Trim();
+                dto.isKategoriDeleted = item.kategoriisdeleted;
                 liste.Add(dto);
             }
             return liste;

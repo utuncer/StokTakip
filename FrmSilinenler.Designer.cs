@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbTablolar = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnGeriGetir = new System.Windows.Forms.Button();
             this.btnKapat = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -50,6 +50,26 @@
             this.panel1.Size = new System.Drawing.Size(800, 100);
             this.panel1.TabIndex = 0;
             // 
+            // cmbTablolar
+            // 
+            this.cmbTablolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmbTablolar.FormattingEnabled = true;
+            this.cmbTablolar.Location = new System.Drawing.Point(147, 28);
+            this.cmbTablolar.Name = "cmbTablolar";
+            this.cmbTablolar.Size = new System.Drawing.Size(217, 33);
+            this.cmbTablolar.TabIndex = 0;
+            this.cmbTablolar.SelectedIndexChanged += new System.EventHandler(this.cmbTablolar_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(25, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 25);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Tablolar";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnGeriGetir);
@@ -59,6 +79,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 100);
             this.panel2.TabIndex = 1;
+            // 
+            // btnGeriGetir
+            // 
+            this.btnGeriGetir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGeriGetir.Location = new System.Drawing.Point(254, 26);
+            this.btnGeriGetir.Name = "btnGeriGetir";
+            this.btnGeriGetir.Size = new System.Drawing.Size(132, 49);
+            this.btnGeriGetir.TabIndex = 0;
+            this.btnGeriGetir.Text = "Geri Getir";
+            this.btnGeriGetir.UseVisualStyleBackColor = true;
+            this.btnGeriGetir.Click += new System.EventHandler(this.btnGeriGetir_Click);
+            // 
+            // btnKapat
+            // 
+            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.Location = new System.Drawing.Point(415, 26);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(132, 49);
+            this.btnKapat.TabIndex = 1;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.UseVisualStyleBackColor = true;
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // dataGridView1
             // 
@@ -72,46 +114,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(800, 250);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // cmbTablolar
-            // 
-            this.cmbTablolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.cmbTablolar.FormattingEnabled = true;
-            this.cmbTablolar.Location = new System.Drawing.Point(147, 28);
-            this.cmbTablolar.Name = "cmbTablolar";
-            this.cmbTablolar.Size = new System.Drawing.Size(217, 33);
-            this.cmbTablolar.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(25, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 25);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Tablolar";
-            // 
-            // btnGeriGetir
-            // 
-            this.btnGeriGetir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGeriGetir.Location = new System.Drawing.Point(254, 26);
-            this.btnGeriGetir.Name = "btnGeriGetir";
-            this.btnGeriGetir.Size = new System.Drawing.Size(132, 49);
-            this.btnGeriGetir.TabIndex = 0;
-            this.btnGeriGetir.Text = "Geri Getir";
-            this.btnGeriGetir.UseVisualStyleBackColor = true;
-            // 
-            // btnKapat
-            // 
-            this.btnKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKapat.Location = new System.Drawing.Point(415, 26);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(132, 49);
-            this.btnKapat.TabIndex = 1;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.UseVisualStyleBackColor = true;
-            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // FrmSilinenler
             // 
